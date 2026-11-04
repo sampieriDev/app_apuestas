@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Apuestas Fútbol</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header>
+    <h1>⚽ Apuestas de fútbol</h1>
+    <p class="sub">Próximos partidos y apuestas clasificadas según las cuotas del mercado</p>
+  </header>
+
+  <section class="controls">
+    <label>Liga
+      <select id="league">
+        <option value="soccer_epl">Premier League (Inglaterra)</option>
+        <option value="soccer_spain_la_liga">LaLiga (España)</option>
+        <option value="soccer_italy_serie_a">Serie A (Italia)</option>
+        <option value="soccer_germany_bundesliga">Bundesliga (Alemania)</option>
+        <option value="soccer_france_ligue_one">Ligue 1 (Francia)</option>
+        <option value="soccer_uefa_champs_league">Champions League</option>
+        <option value="soccer_uefa_europa_league">Europa League</option>
+        <option value="soccer_mexico_ligamx">Liga MX (México)</option>
+        <option value="soccer_usa_mls">MLS (EE. UU.)</option>
+        <option value="soccer_conmebol_copa_libertadores">Copa Libertadores</option>
+        <option value="soccer_argentina_primera_division">Primera División (Argentina)</option>
+        <option value="soccer_brazil_campeonato">Brasileirão (Brasil)</option>
+      </select>
+    </label>
+    <label>API key de The Odds API
+      <input id="apikey" type="password" placeholder="Pega tu clave aquí (vacío = modo demo)">
+    </label>
+    <button id="load">Cargar partidos</button>
+  </section>
+  <p id="status" class="status"></p>
+
+  <section id="summary" class="summary" hidden>
+    <div class="col rec"><h2>⭐ Recomendadas</h2><ol id="top-rec"></ol></div>
+    <div class="col safe"><h2>🛡️ Más "seguras"</h2><ol id="top-safe"></ol></div>
+    <div class="col risk"><h2>🔥 Más riesgosas</h2><ol id="top-risk"></ol></div>
+  </section>
+
+  <section id="matches" class="matches"></section>
+
+  <details class="howto">
+    <summary>¿Cómo se clasifican las apuestas?</summary>
+    <ul>
+      <li>Se toman las cuotas decimales de todas las casas de apuestas disponibles para el resultado (1X2) y para más/menos 2.5 goles.</li>
+      <li>Cada cuota se convierte en probabilidad implícita (1 / cuota) y se quita el margen de la casa para obtener una probabilidad "justa". Se promedia entre casas (consenso).</li>
+      <li><b>Más "segura"</b>: la opción con mayor probabilidad de consenso (cuota más baja, pero paga poco).</li>
+      <li><b>Más riesgosa</b>: la opción con menor probabilidad (cuota más alta, paga mucho pero rara vez acierta).</li>
+      <li><b>Recomendada</b>: la opción con mejor valor esperado = probabilidad de consenso × mejor cuota disponible − 1, entre opciones con al menos 30 % de probabilidad. Un valor positivo indica que alguna casa paga por encima del consenso.</li>
+    </ul>
+  </details>
+
+  <footer class="disclaimer">
+    <b>Juego responsable:</b> esta app es solo informativa. Ninguna apuesta es segura: las probabilidades vienen de las cuotas del mercado y no garantizan resultados.
+    Apuesta solo lo que puedas permitirte perder, solo si eres mayor de edad y si es legal en tu país. Si el juego deja de ser diversión, busca ayuda.
+  </footer>
+
+  <script src="app.js"></script>
+</body>
+</html>
