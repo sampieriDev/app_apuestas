@@ -37,3 +37,5 @@ table.all td:not(:first-child) { text-align: right; }
 .howto summary { cursor: pointer; font-weight: 600; }
 .disclaimer { margin-top: 16px; padding: 12px; border: 1px solid var(--risk); border-radius: 10px; font-size: 13px; color: var(--muted); }
 .pos { color: var(--safe); } .neg { color: var(--muted); }
+button.extra { width: 100%; margin: 4px 0 8px; background: transparent; border: 1px dashed var(--accent); color: var(--accent); }
+.match h4 { margin: 10px 0 0; font-size: 13px; color: var(--text); }
